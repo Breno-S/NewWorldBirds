@@ -1,0 +1,14 @@
+body {
+    padding: 0.5em;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.image-satelite {
+    width: 20%;
+    min-width: 200px;
+    display: inline;
+}
