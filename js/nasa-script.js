@@ -5,7 +5,7 @@ let month;
 
 let habitatSection = document.getElementById("habitat-section");
 
-function getSat(lon, lat) {
+async function getSat(lon, lat) {
 	for (let i = 0; i < years.length; i++) {
 		for (let j = 1; j <= 12; j++) {
 			switch (j) {
@@ -48,22 +48,33 @@ function getSat(lon, lat) {
 				default:
 					break;
 			}
-			apiUrl = "https://api.nasa.gov/planetary/earth/imagery?lon=" + lon + "&lat=" + lat + "&date=" + `${years[i]}-${month}-01` +"&dim=0.1&api_key=" + nasaKey;
+			
+			url = "https://api.nasa.gov/planetary/earth/imagery?lon=" + lon + "&lat=" + lat + "&date=" + `${years[i]}-${month}-01` +"&dim=0.1&api_key=" + nasaKey;
 
-			fetch(apiUrl)
-			.then(function(response) {
-				return response.blob();
-			})
-			.then(function(myblob) {
-				let objectURL = URL.createObjectURL(myblob);
+			try {
+				const response = await fetch(url);
+				
+				if (!response.ok) {
+					throw new Error('Network response was not OK');
+				}
+				
+				const data = await response.blob();
+				
+				// Use the response data here
+				console.log(data);
+			
+				let objectURL = URL.createObjectURL(data);
 				
 				let newMap = document.createElement("img");
 				newMap.className = "satelite-image";
 				newMap.src = objectURL;
 				
 				habitatSection.appendChild(newMap);
-			});
+
+			} catch (error) {
+				// Handle any errors that occurred during the request
+				console.error('Error:', error);
+			}
 		}
-		
 	}
 }

@@ -1,1 +1,0 @@
-curl --location 'https://api.ebird.org/v2/data/obs/KZ/recent' --header 'X-eBirdApiToken: 3kbfm28srv56'
