@@ -1,4 +1,17 @@
+let requestCounter = 0; // Contador de solicitações
+let latestCountry = ""; // Armazenador de país da solicitação mais recentes
+
 async function getBirds(country) {
+  if (country == 0) {
+    return;
+  } else {
+    latestCountry = country;
+    let mapGallery = document.getElementById("gallery");
+    mapGallery.innerHTML = "";
+
+    requestCounter++; // Incrementar o contador de solicitações
+  }
+  
   let url = `https://api.ebird.org/v2/data/obs/${country}/recent/notable?detail=full`;
   try {
     const response = await fetch(url, {
@@ -22,7 +35,7 @@ async function getBirds(country) {
     lon = data[0].lng.toFixed(2);
     console.log(lon);
 
-    getSat(lon, lat);
+    getSat(lon, lat, country);
   } catch (error) {
     // Handle any errors that occurred during the request
     console.error('Error:', error);

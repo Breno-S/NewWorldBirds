@@ -1,14 +1,35 @@
-body {
-    padding: 0.5em;
+header {
+	padding: 0.5em;
+	text-align: center;
+	background-color: turquoise;
 }
 
 .container {
-    max-width: 720px;
-    margin: 0 auto;
+	max-width: 720px;
+	padding: 0.5em;
+	margin: 0 auto;
 }
 
-.satelite-image {
-    width: 20%;
-    min-width: 200px;
-    display: inline;
+img {
+	height: 200px;
+}
+
+.gallery-wrapper {
+	overflow-x: auto;
+	height: 240px;
+	border: 2px solid red;
+	border-radius: 10px;
+	padding: 0.5em;
+}
+
+.gallery {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: nowrap;
+	gap: 15px;
+}
+
+.image-year {
+	width: 100%;
+	text-align: center;
 }
