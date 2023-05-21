@@ -2,14 +2,15 @@ let requestCounter = 0; // Contador de solicitações
 let latestCountry = ""; // Armazenador de país da solicitação mais recentes
 
 async function getBirds(country) {
+  let mapGallery = document.getElementById("gallery");
+  mapGallery.innerHTML = "";
+
+  latestCountry = country;
+
+  requestCounter++; // Incrementar o contador de solicitações
+  
   if (country == 0) {
     return;
-  } else {
-    latestCountry = country;
-    let mapGallery = document.getElementById("gallery");
-    mapGallery.innerHTML = "";
-
-    requestCounter++; // Incrementar o contador de solicitações
   }
   
   let url = `https://api.ebird.org/v2/data/obs/${country}/recent/notable?detail=full`;

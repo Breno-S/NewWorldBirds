@@ -3,9 +3,9 @@ const nasaKey = "d5k7bOWBuIeEAm6QoQdELpDKlLHanowuWKVSaeQG";
 const years = ["2014", "2015", "2016", "2017", "2018", "2019", "2020"];
 let month;
 
-let mapGallery = document.getElementById("gallery");
-
 async function getSat(lon, lat, country) {
+	let mapGallery = document.getElementById("gallery");
+
 	const currentRequestNumber = requestCounter; // Armazenar o número da solicitação atual
 
 	for (let i = 0; i < years.length; i++) {
