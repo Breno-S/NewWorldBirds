@@ -1,3 +1,4 @@
+
 let requestCounter = 0; // Contador de solicitações
 let latestCountry = ""; // Armazenador de país da solicitação mais recentes
 
@@ -8,7 +9,7 @@ async function getBirds(country) {
   latestCountry = country;
 
   requestCounter++; // Incrementar o contador de solicitações
-  
+
   if (country == 0) {
     return;
   }
@@ -29,14 +30,25 @@ async function getBirds(country) {
     
     // Use the response data here
     console.log(data);
-    
+
+    speciesName = data[0].comName;
+    console.log(speciesName);
+
+    const formattedSpeciesName = formatWikiTitle(speciesName);
+    console.log(formattedSpeciesName);
+
     lat = data[0].lat.toFixed(2);
     console.log(lat);
 
     lon = data[0].lng.toFixed(2);
     console.log(lon);
 
+    wikiInfo = fetchWikiExtract(formattedSpeciesName);
+
+    console.log(wikiInfo);
+    
     getSat(lon, lat, country);
+    
   } catch (error) {
     // Handle any errors that occurred during the request
     console.error('Error:', error);
