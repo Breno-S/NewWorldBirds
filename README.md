@@ -6,8 +6,8 @@ Nesta atividade foi pedido que criassemos um site que consumisse 5 APIS/endpoint
 
 ## 2 - Wikimedia API
 
-## 3 LibreTranslate API
+## 3 - LibreTranslate API
 
-## 4 NASA Earth API
+## 4 - NASA Earth API
 
 
