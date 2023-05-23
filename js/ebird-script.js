@@ -53,10 +53,10 @@ async function getBirds(country) {
 
     wikiData = await fetchWikiExtract(formattedSpeciesName);
 
-    const sumary = wikiData.query.pages[0].extract;
+    const sumary = await wikiData.query.pages[0].extract;
     birdInfo.textContent = translate(sumary);
 
-    const imageUrl = wikiData.query.pages[0].thumbnail.source;
+    const imageUrl = await wikiData.query.pages[0].thumbnail.source;
     birdImage.src = imageUrl;
 
     getSat(lon, lat, country);
