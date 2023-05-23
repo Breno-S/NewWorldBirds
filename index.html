@@ -14,6 +14,7 @@
     </header>
 
     <main class="container">
+        <span class="container">Selecione um país:</span>
         <form class="container">
             <select name="country" class="form-control" id="country" onchange="getBirds(this.value)">
                 <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
@@ -75,6 +76,11 @@
             </select>
         </form>
 
+        <section class="container">
+            <h2 id="bird-name"></h2>
+            <img src="" alt="" id="bird-image">
+            <p id="bird-info"></p>
+        </section>
 
         <section class="container" id="location-section">
             <h2 class="">Location Timeline</h2>
@@ -93,5 +99,6 @@
 <script src="js/ebird-script.js"></script>
 <script src="js/nasa-script.js"></script>
 <script src="js/wiki-script.js"></script>
+<script src="js/libretranslate-script.js"></script>
 </html>
 

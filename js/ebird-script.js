@@ -1,8 +1,15 @@
+let birdName = document.getElementById("bird-name");
+let birdInfo = document.getElementById("bird-info");
+let birdImage = document.getElementById("bird-image");
 
 let requestCounter = 0; // Contador de solicitações
 let latestCountry = ""; // Armazenador de país da solicitação mais recentes
 
 async function getBirds(country) {
+  birdName.textContent = "";
+  birdInfo.textContent = "";
+  birdInfo.src = "";
+
   let mapGallery = document.getElementById("gallery");
   mapGallery.innerHTML = "";
 
@@ -33,6 +40,7 @@ async function getBirds(country) {
 
     speciesName = data[0].comName;
     console.log(speciesName);
+    birdName.innerText = speciesName;
 
     const formattedSpeciesName = formatWikiTitle(speciesName);
     console.log(formattedSpeciesName);
@@ -43,10 +51,14 @@ async function getBirds(country) {
     lon = data[0].lng.toFixed(2);
     console.log(lon);
 
-    wikiInfo = fetchWikiExtract(formattedSpeciesName);
+    wikiData = await fetchWikiExtract(formattedSpeciesName);
 
-    console.log(wikiInfo);
-    
+    const sumary = wikiData.query.pages[0].extract;
+    birdInfo.textContent = translate(sumary);
+
+    const imageUrl = wikiData.query.pages[0].thumbnail.source;
+    birdImage.src = imageUrl;
+
     getSat(lon, lat, country);
     
   } catch (error) {

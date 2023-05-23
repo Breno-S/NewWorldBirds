@@ -1,7 +1,8 @@
 function fetchWikiExtract(param) {
 	const wikiEndpoint = "https://en.wikipedia.org/w/api.php";
 	const wikiParams = "?action=query"
-	+ "&prop=extracts|images"
+	+ "&prop=extracts|pageimages"
+	+ "&pithumbsize=500"
 	+ "&exsentences=2"
 	+ "&exlimit=1"
 	+ "&titles=" + encodeURIComponent(param)
