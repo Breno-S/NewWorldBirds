@@ -38,9 +38,12 @@ async function getBirds(country) {
     // Use the response data here
     console.log(data);
 
-    speciesName = data[0].comName;
+    commonName = data[0].comName;
+    speciesName = data[0].sciName;
+    console.log(commonName);
     console.log(speciesName);
-    birdName.innerText = speciesName;
+    
+    birdName.innerText = commonName + " (" + speciesName + ")";
 
     const formattedSpeciesName = formatWikiTitle(speciesName);
     console.log(formattedSpeciesName);
@@ -54,6 +57,8 @@ async function getBirds(country) {
     wikiData = await fetchWikiExtract(formattedSpeciesName);
 
     const sumary = await wikiData.query.pages[0].extract;
+
+    // remover a função translate() se não estiver rodando o servidor do LibreTranslate
     birdInfo.textContent = translate(sumary);
 
     const imageUrl = await wikiData.query.pages[0].thumbnail.source;

@@ -6,6 +6,7 @@ function fetchWikiExtract(param) {
 	+ "&exsentences=2"
 	+ "&exlimit=1"
 	+ "&titles=" + encodeURIComponent(param)
+	+ "&redirects"
 	+ "&explaintext=1"
 	+ "&format=json"
 	+ "&formatversion=2"
