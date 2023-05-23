@@ -9,6 +9,7 @@ async function getBirds(country) {
   birdName.textContent = "";
   birdInfo.textContent = "";
   birdInfo.src = "";
+  clearIntruders();
 
   let mapGallery = document.getElementById("gallery");
   mapGallery.innerHTML = "";
@@ -66,6 +67,7 @@ async function getBirds(country) {
 
     getSat(lon, lat, country);
     
+    getWeatherHistory(lon, lat);
   } catch (error) {
     // Handle any errors that occurred during the request
     console.error('Error:', error);

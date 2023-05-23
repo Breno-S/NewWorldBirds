@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+html {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
 h1 {
 	font-size: 1.75em;
+	font-family: 'Josefin Sans', sans-serif; ;
 }
 
 header {
@@ -8,10 +15,22 @@ header {
 	background-color: turquoise;
 }
 
+main {
+	margin-top: 3em;
+}
+
+#logo {
+	height: 24px;
+}
+
 .container {
 	max-width: 720px;
 	padding: 0.5em;
 	margin: 0 auto;
+}
+
+select {
+	font-size: 1em;
 }
 
 #bird-section {
@@ -19,7 +38,26 @@ header {
 	padding: 1em;
 }
 
-img {
+#bird-name {
+	text-align: center;
+}
+
+#bird-image-div {
+	display: flex;
+	margin: 2em;
+}
+
+#bird-image {
+	height: 350px;
+	margin: 0 auto;
+	border-radius: 1em;
+}
+
+#bird-info {
+	text-align: justify;
+}
+
+#gallery img {
 	height: 200px;
 }
 
@@ -41,4 +79,8 @@ img {
 .image-year {
 	width: 100%;
 	text-align: center;
+}
+
+#mychart {
+	width: 100%;
 }

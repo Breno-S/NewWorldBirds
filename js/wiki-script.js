@@ -3,8 +3,8 @@ function fetchWikiExtract(param) {
 	const wikiParams = "?action=query"
 	+ "&prop=extracts|pageimages"
 	+ "&pithumbsize=500"
-	+ "&exsentences=2"
-	+ "&exlimit=1"
+	+ "&exintro=1"
+	+ "&exlimit=max"
 	+ "&titles=" + encodeURIComponent(param)
 	+ "&redirects"
 	+ "&explaintext=1"
