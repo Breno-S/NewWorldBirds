@@ -9,6 +9,10 @@ h1 {
 	font-family: 'Josefin Sans', sans-serif; ;
 }
 
+h2 {
+	font-size: 1.25em;
+}
+
 header {
 	padding: 0.5em;
 	text-align: center;
