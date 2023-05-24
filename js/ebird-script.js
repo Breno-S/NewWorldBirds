@@ -7,9 +7,10 @@ let latestCountry = ""; // Armazenador de país da solicitação mais recentes
 
 async function getBirds(country) {
   birdName.textContent = "";
+  birdImage.src = "";
   birdInfo.textContent = "";
-  birdInfo.src = "";
   clearIntruders();
+  clearGraph();
 
   let mapGallery = document.getElementById("gallery");
   mapGallery.innerHTML = "";
@@ -40,8 +41,9 @@ async function getBirds(country) {
     console.log(data);
 
     commonName = data[0].comName;
-    speciesName = data[0].sciName;
     console.log(commonName);
+
+    speciesName = data[0].sciName;
     console.log(speciesName);
     
     birdName.innerText = commonName + " (" + speciesName + ")";
@@ -55,11 +57,17 @@ async function getBirds(country) {
     lon = data[0].lng.toFixed(2);
     console.log(lon);
 
+    date = data[0].obsDt;
+    date = date.split(" ")[0];
+    console.log(date);
+
     wikiData = await fetchWikiExtract(formattedSpeciesName);
 
     const sumary = await wikiData.query.pages[0].extract;
 
-    // remover a função translate() se não estiver rodando o servidor do LibreTranslate
+    // Remover a função translate() se não estiver rodando o servidor do LibreTranslate
+    // ex: 
+    //    birdInfo.textContent = sumary;
     birdInfo.textContent = translate(sumary);
 
     const imageUrl = await wikiData.query.pages[0].thumbnail.source;
@@ -67,9 +75,10 @@ async function getBirds(country) {
 
     getSat(lon, lat, country);
     
-    getWeatherHistory(lon, lat);
+    getWeatherHistory(lon, lat, date);
   } catch (error) {
     // Handle any errors that occurred during the request
     console.error('Error:', error);
   }
 }
+
